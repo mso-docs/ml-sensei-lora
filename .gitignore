@@ -1,0 +1,94 @@
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+
+# Virtual environments
+.venv/
+env/
+venv/
+.conda/
+
+# ===========================
+# Project Outputs
+# ===========================
+# Hugging Face model outputs (LoRA adapters, configs, checkpoints)
+outputs/
+checkpoints/
+checkpoint-*/
+*/checkpoint-*/
+
+# Do NOT commit LoRA weights or safetensor/bin files
+*.safetensors
+*.bin
+*.pt
+*.pth
+
+# Trainer logs & optimizer states
+trainer_state.json
+optimizer.pt
+scheduler.pt
+rng_state.pth
+
+# ===========================
+# Hugging Face / Transformers
+# ===========================
+# Tokenizer and cache files
+tokenizer.json
+tokenizer.model
+special_tokens_map.json
+tokenizer_config.json
+
+# Transformers cache (datasets + models)
+~/.cache/huggingface/
+huggingface_cache/
+datasets_cache/
+cache/
+**/cache/
+
+# ===========================
+# Datasets (keep your JSONLs separate)
+# ===========================
+# Ignore very large local datasets, but keep curated JSONL files
+data/raw/
+data/cache/
+*.csv
+*.tsv
+
+# NOTE:
+# You SHOULD commit curated training files like:
+# - data/train.jsonl
+# - data/eval.jsonl
+# (remove this ignore rule if you want all data committed)
+
+# ===========================
+# Notebooks / tmp
+# ===========================
+.ipynb_checkpoints/
+*.checkpoint.ipynb
+*.ipynb~ 
+*.tmp
+*.log
+logs/
+
+# ===========================
+# OS / Editor files
+# ===========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.iml
+
+# ===========================
+# Secret keys / credentials
+# ===========================
+.env
+*.env
+HF_TOKEN
+hf_token.txt

@@ -1,6 +1,7 @@
 import os
 import yaml
 from dataclasses import dataclass
+import torch
 
 from datasets import load_dataset
 from transformers import (
@@ -9,6 +10,7 @@ from transformers import (
     TrainingArguments,
     Trainer,
     DataCollatorForLanguageModeling,
+    BitsAndBytesConfig,
 )
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 from huggingface_hub import login
@@ -115,11 +117,19 @@ def main():
 
     tokenized_ds = raw_ds.map(tokenize_fn, batched=True)
 
-    # Setup model in 4-bit or 8-bit
+    # Setup model in 4-bit quantization
+    bnb_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype=torch.float16,
+        bnb_4bit_use_double_quant=True,
+    )
+
     model = AutoModelForCausalLM.from_pretrained(
         cfg.base_model_name,
-        load_in_4bit=True,
+        quantization_config=bnb_config,
         device_map="auto",
+        torch_dtype=torch.float16,
     )
 
     model = prepare_model_for_kbit_training(model)
@@ -150,12 +160,15 @@ def main():
         learning_rate=cfg.learning_rate,
         warmup_ratio=cfg.warmup_ratio,
         logging_steps=cfg.logging_steps,
-        evaluation_strategy="steps",
+        eval_strategy="steps",
         eval_steps=cfg.eval_steps,
         save_steps=cfg.save_steps,
         save_total_limit=2,
         bf16=False,
-        fp16=True,  # your 4070 should be fine with fp16
+        fp16=True,
+        optim="adamw_torch_fused",  # Faster optimizer
+        gradient_checkpointing=True,  # Memory efficient
+        dataloader_num_workers=0,  # Single worker for Windows
         report_to=[],
         push_to_hub=cfg.push_to_hub,
         hub_model_id=cfg.hub_repo_id if cfg.push_to_hub else None,
