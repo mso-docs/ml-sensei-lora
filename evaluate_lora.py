@@ -4,7 +4,7 @@ from peft import PeftModel
 
 
 BASE_MODEL = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
-LORA_ADAPTER = "your-username/ml-sensei-lora-tinyllama-1b"
+LORA_ADAPTER = "mackenzietechdocs/ml-sensei-lora-tinyllama-1.1b"
 EVAL_PATH = "data/eval.jsonl"
 MAX_NEW_TOKENS = 256
 
