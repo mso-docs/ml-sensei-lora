@@ -29,4 +29,4 @@ training:
 # Hugging Face Hub
 hub:
   push_to_hub: true
-  repo_id: "mackenzietechdocs/ml-sensei-lora-tinyllama-1b"
+  repo_id: "mackenzietechdocs/ml-sensei-lora-tinyllama-1.1b"
