@@ -1,0 +1,32 @@
+# Base model + LoRA config
+base_model_name: "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+lora:
+  r: 8
+  alpha: 32
+  dropout: 0.05
+  target_modules:
+    - "q_proj"
+    - "v_proj"
+
+# Data paths (local)
+data:
+  train_path: "data/train.jsonl"
+  eval_path: "data/eval.jsonl"
+
+# Training hyperparameters
+training:
+  output_dir: "outputs/ml-sensei-lora"
+  num_train_epochs: 3
+  per_device_train_batch_size: 4
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0002
+  warmup_ratio: 0.03
+  max_seq_length: 512
+  logging_steps: 50
+  eval_steps: 200
+  save_steps: 200
+
+# Hugging Face Hub
+hub:
+  push_to_hub: true
+  repo_id: "mackenzietechdocs/ml-sensei-lora-tinyllama-1b"
