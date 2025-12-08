@@ -165,8 +165,6 @@ def main():
         save_total_limit=2,
         bf16=False,
         fp16=True,
-        optim="adamw_torch_fused",  # Faster optimizer
-        gradient_checkpointing=True,  # Memory efficient
         dataloader_num_workers=0,  # Single worker for Windows
         report_to=[],
         push_to_hub=cfg.push_to_hub,
