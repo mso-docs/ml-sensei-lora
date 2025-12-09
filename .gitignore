@@ -92,3 +92,40 @@ Thumbs.db
 *.env
 HF_TOKEN
 hf_token.txt
+
+# ===========================
+# Data files
+# ===========================
+# Raw data and processing scripts (keep private)
+raw/
+raw/markdown/
+raw/pdfs/
+raw/processed/
+raw/processed
+raw/text/
+/raw/docs/
+*.pdfs
+
+# Full training datasets (keep private, share samples only)
+data/train.jsonl
+data/eval.jsonl
+data/*_from_chunks.jsonl
+
+# Benchmark raw results (share summarized versions instead)
+benchmark_results.json
+benchmark_quick_results.json
+benchmark_standard_results.json
+eval_results/
+
+# ===========================
+# Files TO SHARE (ensure these are NOT ignored)
+# ===========================
+# Keep these files for HuggingFace:
+# !BENCHMARKS.md
+# !BENCHMARK_RESULTS.md
+# !benchmark_quick.py
+# !benchmark_lora.py
+# !config.yaml
+# !requirements.txt
+# !samples/
+
