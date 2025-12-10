@@ -2,6 +2,8 @@
 
 A small LoRA fine-tune that turns a base LLM into a **clear, structured explainer** for ML / LLM / systems concepts—written in a documentation-style tone.
 
+[Interactive Demo](https://huggingface.co/spaces/mackenzietechdocs/ml-sensei-chat)
+[Model Card](https://huggingface.co/mackenzietechdocs/ml-sensei-lora-tinyllama-1.1b)
 This repo contains:
 
 - 🗂 A curated **instruction dataset** (`train.jsonl`, `eval.jsonl`)
