@@ -6,6 +6,7 @@ A small LoRA fine-tune that turns a base LLM into a **clear, structured explaine
 [Interactive Demo](https://huggingface.co/spaces/mackenzietechdocs/ml-sensei-chat) |
 [Model Card](https://huggingface.co/mackenzietechdocs/ml-sensei-lora-tinyllama-1.1b)
 
+## Overview
 
 This repo contains:
 
